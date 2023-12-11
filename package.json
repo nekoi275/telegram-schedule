@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueform/multiselect": "^2.6.6",
+    "oh-vue-icons": "^1.0.0-rc3",
     "vue": "^3.3.8"
   },
   "devDependencies": {

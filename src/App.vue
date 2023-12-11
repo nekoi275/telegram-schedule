@@ -1,30 +1,52 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import InfoCard from "./components/InfoCard.vue";
+import ImageModal from "./components/ImageModal.vue";
+import posts from "./assets/posts-data.json";
+import type { image, post } from "./interfaces";
+import { ref } from "vue";
+
+let isImageOpen = ref(false)
+let openedImage = ref({} as image)
+
+function openImage(post: post, imageName: string) {
+  openedImage.value = post.images.filter(img => img.name = imageName)[0]
+  isImageOpen.value = true
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <nav>
+    <Multi-select mode="tags"></Multi-select>
+    <button><V-icon name="bi-plus-square"></V-icon></button>
+  </nav>
+  <div class="wrapper">
+    <main>
+      <InfoCard v-for="post in posts" :key="post.id" :post="post" @openImage="openImage"></InfoCard>
+    </main>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <ImageModal :isOpen="isImageOpen" :image="openedImage" @close="isImageOpen = false"></ImageModal>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+nav {
+  width: 100%;
+  height: 70px;
+  background-color: var(--main-dark-color);
+  color: var(--main-light-color);
+  position: fixed;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+button {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 14px;
+  right: 15px;
+  padding: 0px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.multiselect {
+  width: 150px;
+  position: absolute;
+  left: 20px;
+  top: 14px;
 }
 </style>
