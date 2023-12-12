@@ -1,18 +1,24 @@
 <script setup lang="ts">
 import InfoCard from "./components/InfoCard.vue";
 import ImageModal from "./components/ImageModal.vue";
-import posts from "./assets/posts-data.json";
+//import posts from "./assets/posts-data.json";
 import type { Image, Post } from "./interfaces";
-import { useImageStore } from './stores/image'
-import { useApiStore } from './stores/api'
-const imageStore = useImageStore()
-const api = useApiStore()
+import { useImageStore } from "./stores/image";
+import { useApiStore } from "./stores/api";
+import { onMounted, ref } from "vue";
+const imageStore = useImageStore();
+const api = useApiStore();
+let posts = ref([] as Post[])
 
 function openImage(post: Post, image: Image, index: number) {
-  imageStore.image = image
-  imageStore.isOpen = true
-  imageStore.imageUrl = api.getImageUrl(post.target.group_id, post.date, index)
+  imageStore.image = image;
+  imageStore.isOpen = true;
+  imageStore.imageUrl = api.getImageUrl(post.target.group_id, post.date, index);
+  imageStore.imagePrompt = image.info.parameters.prompt
 }
+onMounted(() => {
+  api.get().then(response => posts.value = response);
+});
 </script>
 
 <template>
@@ -22,7 +28,12 @@ function openImage(post: Post, image: Image, index: number) {
   </nav>
   <div class="wrapper">
     <main>
-      <InfoCard v-for="post in posts" :key="post.id" :post="(post as unknown as Post)" @openImage="openImage"></InfoCard>
+      <InfoCard
+        v-for="post in posts"
+        :key="post.id"
+        :post="(post as unknown as Post)"
+        @openImage="openImage"
+      ></InfoCard>
     </main>
   </div>
   <ImageModal></ImageModal>
@@ -35,6 +46,7 @@ nav {
   background-color: var(--main-dark-color);
   color: var(--main-light-color);
   position: fixed;
+  z-index: 1;
 }
 button {
   width: 40px;

@@ -8,7 +8,7 @@ const imageStore = useImageStore()
     <div class="overlay" @click="imageStore.isOpen = false"></div>
     <div class="modal">
       <img :src="imageStore.imageUrl" />
-      <p>{{ imageStore.image.info.parameters.prompt || ''}}</p>
+      <p>{{ imageStore.imagePrompt }}</p>
     </div>
   </div>
 </template>
