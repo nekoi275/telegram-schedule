@@ -1,6 +1,13 @@
 <script setup lang="ts">
-import { useImageStore } from '../stores/image'
-const imageStore = useImageStore()
+import { useImageStore } from "../stores/image";
+const imageStore = useImageStore();
+
+function formatParams() {
+  let params = {...imageStore.imageParameters}
+  delete params.prompt
+  delete params.negative
+  return params
+}
 </script>
 
 <template>
@@ -8,7 +15,24 @@ const imageStore = useImageStore()
     <div class="overlay" @click="imageStore.isOpen = false"></div>
     <div class="modal">
       <img :src="imageStore.imageUrl" />
-      <p>{{ imageStore.imagePrompt }}</p>
+      <table>
+        <tbody>
+          <tr>
+            <td>Prompt</td>
+            <td>{{ imageStore.imageParameters.prompt }}</td>
+          </tr>
+          <tr>
+            <td>Negative</td>
+            <td>{{ imageStore.imageParameters.negative }}</td>
+          </tr>
+          <tr
+            v-for="[key, value] in Object.entries(formatParams())"
+          >
+            <td>{{ key.charAt(0).toUpperCase() + key.slice(1) }}</td>
+            <td>{{ value }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -40,8 +64,29 @@ const imageStore = useImageStore()
   background-color: var(--main-light-color);
   border-radius: 3px;
   padding: 20px;
+  text-align: center;
+  font-size: 10px;
+  max-height: 700px;
 }
-p {
-  margin-top: 20px;
+img {
+  max-width: 800px;
+  max-height: 350px;
+}
+table {
+  text-align: left;
+  border-collapse: collapse;
+}
+table tbody {
+  overflow-y: scroll;
+  max-height: 300px;
+  display: block;
+}
+table tr td {
+  border: 1px solid;
+  padding-left: 10px;
+}
+tbody tr td:first-child {
+  width: 100px;
+  padding-right: 10px;
 }
 </style>

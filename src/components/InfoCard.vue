@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Post } from "../interfaces";
 
+
 defineProps<{
   post: Post;
 }>();
@@ -8,8 +9,8 @@ defineProps<{
 
 <template>
   <div class="card">
-    <p>Tags: {{ post.text }}</p>
-    <span>Date: {{ post.date }}</span>
+    <p>Text: {{ post.text }}</p>
+    <span>Date: {{ new Date(post.date) }}</span>
     <V-icon name="bi-trash-fill" class="trash-icon"></V-icon>
     <div class="images-container">
       <V-icon

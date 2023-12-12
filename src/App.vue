@@ -14,7 +14,7 @@ function openImage(post: Post, image: Image, index: number) {
   imageStore.image = image;
   imageStore.isOpen = true;
   imageStore.imageUrl = api.getImageUrl(post.target.group_id, post.date, index);
-  imageStore.imagePrompt = image.info.parameters.prompt
+  imageStore.imageParameters = image.info.parameters
 }
 onMounted(() => {
   api.get().then(response => posts.value = response);
