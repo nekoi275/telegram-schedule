@@ -2,15 +2,16 @@
 import InfoCard from "./components/InfoCard.vue";
 import ImageModal from "./components/ImageModal.vue";
 import posts from "./assets/posts-data.json";
-import type { image, post } from "./interfaces";
-import { ref } from "vue";
+import type { Image, Post } from "./interfaces";
+import { useImageStore } from './stores/image'
+import { useApiStore } from './stores/api'
+const imageStore = useImageStore()
+const api = useApiStore()
 
-let isImageOpen = ref(false)
-let openedImage = ref({} as image)
-
-function openImage(post: post, imageName: string) {
-  openedImage.value = post.images.filter(img => img.name = imageName)[0]
-  isImageOpen.value = true
+function openImage(post: Post, image: Image, index: number) {
+  imageStore.image = image
+  imageStore.isOpen = true
+  imageStore.imageUrl = api.getImageUrl(post.target.group_id, post.date, index)
 }
 </script>
 
@@ -21,10 +22,10 @@ function openImage(post: post, imageName: string) {
   </nav>
   <div class="wrapper">
     <main>
-      <InfoCard v-for="post in posts" :key="post.id" :post="post" @openImage="openImage"></InfoCard>
+      <InfoCard v-for="post in posts" :key="post.id" :post="(post as unknown as Post)" @openImage="openImage"></InfoCard>
     </main>
   </div>
-  <ImageModal :isOpen="isImageOpen" :image="openedImage" @close="isImageOpen = false"></ImageModal>
+  <ImageModal></ImageModal>
 </template>
 
 <style scoped>

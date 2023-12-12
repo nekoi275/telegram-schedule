@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import type { image } from "../interfaces";
-
-defineProps<{
-  image: image;
-  isOpen: boolean
-}>();
+import { useImageStore } from '../stores/image'
+const imageStore = useImageStore()
 </script>
 
 <template>
-  <div class="container" v-show="isOpen">
-    <div class="overlay" @click="$emit('close')"></div>
+  <div class="container" v-show="imageStore.isOpen">
+    <div class="overlay" @click="imageStore.isOpen = false"></div>
     <div class="modal">
-      <img :src="image.info.file" />
-      <p>{{ image.info.parameters.prompt }}</p>
+      <img :src="imageStore.imageUrl" />
+      <p>{{ imageStore.image.info.parameters.prompt || ''}}</p>
     </div>
   </div>
 </template>

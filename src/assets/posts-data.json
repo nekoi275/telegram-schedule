@@ -331,5 +331,338 @@
         },
         "date": 1702122540000,
         "id": "post:1702122540000"
+    },
+    {
+        "images": [
+            {
+                "name": "00394-2061531885.webp",
+                "type": "image/webp",
+                "size": 305462,
+                "info": {
+                    "file": "/media/data/workspace/stable-diffusion-webui/outputs/txt2img-images/2023-11-15/00394-2061531885.webp",
+                    "size": [
+                        1920,
+                        1080
+                    ],
+                    "parameters": {
+                        "Steps": "25",
+                        "Sampler": "UniPC",
+                        "CFG scale": "5.0",
+                        "Seed": "2061531885",
+                        "Size": "768x432",
+                        "Model hash": "018d4d65d7",
+                        "Model": "0001softrealistic_v154xxx",
+                        "Denoising strength": "0.25",
+                        "Clip skip": "2",
+                        "Token merging ratio hr": "0.3",
+                        "RNG": "CPU",
+                        "Hires upscale": "2.5",
+                        "Hires steps": "20",
+                        "Hires upscaler": "R-ESRGAN 4x+",
+                        "TI hashes": {
+                            "ng_deepnegative_v1_75t": "54e7e4826d53"
+                        },
+                        "Version": "v1.6.0",
+                        "prompt": "(NSFW:0.75), image style is unreal engine  , cinematic lighting and sunbeam sharp focus and vibrant colors , , detailed Hayao Miyazaki , hard lighting and rossdraws global illumination Gaussian Blur and volumetrics dtx and movie  still and Swirl Bokeh , , incluenced by a mix of Harry Clarke and H.R. Giger ,",
+                        "negative": " ng_deepnegative_v1_75t"
+                    },
+                    "tags": {
+                        "en": [
+                            "armchair",
+                            "chair",
+                            "couch",
+                            "couple",
+                            "girl",
+                            "lay",
+                            "man",
+                            "pillow",
+                            "pose",
+                            "red",
+                            "woman"
+                        ],
+                        "cn": [
+                            "扶手椅 ",
+                            "椅子 ",
+                            "沙发",
+                            "夫妇/两人/几个",
+                            "女孩 ",
+                            "躺 ",
+                            "男人",
+                            "枕头 ",
+                            "摆姿势拍照",
+                            "红色",
+                            "女人 "
+                        ]
+                    },
+                    "nsfw": {
+                        "profile": {
+                            "porn": 0.9466710090637207,
+                            "neutral": 0.03582870960235596,
+                            "sexy": 0.015503518283367157,
+                            "hentai": 0.001447518588975072,
+                            "drawings": 0.00054931704653427
+                        },
+                        "sfw": 0.26412972807884216,
+                        "nsfw": 0.7358703017234802
+                    }
+                }
+            },
+            {
+                "name": "00189-26.webp",
+                "type": "image/webp",
+                "size": 416710,
+                "info": {
+                    "file": "/media/data/workspace/stable-diffusion-webui/outputs/txt2img-images/2023-11-14/00189-26.webp",
+                    "size": [
+                        1920,
+                        1080
+                    ],
+                    "parameters": {
+                        "Steps": "20",
+                        "Sampler": "DDIM",
+                        "CFG scale": "7",
+                        "Seed": "26",
+                        "Size": "768x432",
+                        "Model hash": "018d4d65d7",
+                        "Model": "0001softrealistic_v154xxx",
+                        "Denoising strength": "0.25",
+                        "Clip skip": "2",
+                        "Token merging ratio hr": "0.3",
+                        "RNG": "CPU",
+                        "Hires prompt": "\"\"",
+                        "Hires upscale": "2.5",
+                        "Hires upscaler": "R-ESRGAN 4x+",
+                        "Pad conds": "True",
+                        "Version": "v1.6.0",
+                        "prompt": "((NSFW)), Hoop Earrings, Prismatic Flawless Chrysoberyl, Princess Cut, Step Cut Facets, 15.00 Carat, Spellbinding, Silky, Stainless Steel, Scratch-Resistant, (Sturdiness:1.46), Fracture Filling, Tension-Style Setting, Natural, Scarce, Futuristic, Regency, Memorial and Remembrance, RAW photo, high detailed, 8k uhd, soft lighting, high quality, masterpiece, beautiful, breathtaking hyperrealistic, octane render, trending on Artstation",
+                        "negative": "ng_deepnegative_v1_75t,  (text:1.12), cropped, ((((ugly)))), (((duplicate))), ((morbid)), ((mutilated)), out of frame, extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck)))"
+                    },
+                    "tags": {
+                        "en": [
+                            "belly",
+                            "arm",
+                            "bandeau",
+                            "beautiful",
+                            "bed",
+                            "black",
+                            "brunette",
+                            "corset",
+                            "girl",
+                            "lay",
+                            "muscle",
+                            "pillow",
+                            "pose",
+                            "stomach",
+                            "stretch",
+                            "underclothes",
+                            "woman"
+                        ],
+                        "cn": [
+                            "肚子 ",
+                            "手臂 ",
+                            "束发带 ",
+                            "美丽的 ",
+                            "床",
+                            "黑色",
+                            "浅黑肤色的女人 ",
+                            "紧身衣",
+                            "女孩 ",
+                            "躺 ",
+                            "肌肉 ",
+                            "枕头 ",
+                            "摆姿势拍照",
+                            "腹部",
+                            "拉伸 ",
+                            "内衣 ",
+                            "女人 "
+                        ]
+                    },
+                    "nsfw": {
+                        "profile": {
+                            "porn": 0.9930374026298523,
+                            "sexy": 0.0051975492388010025,
+                            "neutral": 0.0010556482011452317,
+                            "drawings": 0.000394608941860497,
+                            "hentai": 0.00031479125027544796
+                        },
+                        "sfw": 0.03470594808459282,
+                        "nsfw": 0.9652940630912781
+                    }
+                }
+            },
+            {
+                "name": "01299-978765463.webp",
+                "type": "image/webp",
+                "size": 370754,
+                "info": {
+                    "file": "/media/data/workspace/stable-diffusion-webui/outputs/txt2img-images/2023-11-14/01299-978765463.webp",
+                    "size": [
+                        1920,
+                        1080
+                    ],
+                    "parameters": {
+                        "Steps": "60",
+                        "Sampler": "UniPC",
+                        "CFG scale": "7",
+                        "Seed": "978765463",
+                        "Size": "768x432",
+                        "Model hash": "018d4d65d7",
+                        "Model": "0001softrealistic_v154xxx",
+                        "Denoising strength": "0.5",
+                        "Clip skip": "2",
+                        "Token merging ratio hr": "0.3",
+                        "RNG": "CPU",
+                        "Hires upscale": "2.5",
+                        "Hires steps": "15",
+                        "Hires upscaler": "R-ESRGAN 4x+",
+                        "Pad conds": "True",
+                        "Version": "v1.6.0",
+                        "prompt": "Erotic Symphony Surrender Digital Art, Smooth Gradients, Unreal Engine 5,Photorealism, HD quality, (8k resolution:1.38), cinema 4d, 3D, beautiful, cinematic, art by artgerm and greg rutkowski and alphonse mucha and loish and WLOP"
+                    },
+                    "tags": {
+                        "en": [
+                            "beautiful",
+                            "bed",
+                            "brunette",
+                            "lamp",
+                            "girl",
+                            "gun",
+                            "hair",
+                            "handgun",
+                            "lay",
+                            "machine gun",
+                            "muscle",
+                            "pose",
+                            "wall lamp",
+                            "underclothes",
+                            "woman"
+                        ],
+                        "cn": [
+                            "美丽的 ",
+                            "床",
+                            "浅黑肤色的女人 ",
+                            "灯 ",
+                            "女孩 ",
+                            "枪 ",
+                            "头发 ",
+                            "手枪 ",
+                            "躺 ",
+                            "机枪 ",
+                            "肌肉 ",
+                            "摆姿势拍照",
+                            "壁灯 ",
+                            "内衣 ",
+                            "女人 "
+                        ]
+                    },
+                    "nsfw": {
+                        "profile": {
+                            "porn": 0.9147854447364807,
+                            "sexy": 0.08001115918159485,
+                            "neutral": 0.0033228760585188866,
+                            "hentai": 0.0015061218291521072,
+                            "drawings": 0.00037435084232129157
+                        },
+                        "sfw": 0.027716586366295815,
+                        "nsfw": 0.9722833633422852
+                    }
+                }
+            },
+            {
+                "name": "00820-725181561.webp",
+                "type": "image/webp",
+                "size": 418322,
+                "info": {
+                    "file": "/media/data/workspace/stable-diffusion-webui/outputs/txt2img-images/2023-11-16/00820-725181561.webp",
+                    "size": [
+                        1920,
+                        1080
+                    ],
+                    "parameters": {
+                        "Steps": "20",
+                        "Sampler": "UniPC",
+                        "CFG scale": "7",
+                        "Seed": "725181561",
+                        "Size": "768x432",
+                        "Model hash": "018d4d65d7",
+                        "Model": "0001softrealistic_v154xxx",
+                        "Denoising strength": "0.25",
+                        "Clip skip": "2",
+                        "Token merging ratio hr": "0.3",
+                        "RNG": "CPU",
+                        "Hires upscale": "2.5",
+                        "Hires upscaler": "4xUltrasharp_4xUltrasharpV10",
+                        "Pad conds": "True",
+                        "Version": "v1.6.0",
+                        "prompt": "Torc, Glittering Very, Very Slightly Included (VVS1) Spinel, Baguette Cut, Girdle Facets, 8.00 Carat, Luminous, Sheen, Niobium, Indestructible, Longevity, Modification, Micro Setting, Local, Rare, Minimalist, New Age, Protection and Luck Arthur Grace, Extremely-detailed, Masterpiece, trending on artstation Studio Ghibli very detailed 4K U",
+                        "negative": "easynegative"
+                    },
+                    "tags": {
+                        "en": [
+                            "belly",
+                            "bandeau",
+                            "swimwear",
+                            "bikini top",
+                            "brunette",
+                            "brush",
+                            "cosmetic",
+                            "couch",
+                            "earring",
+                            "girl",
+                            "lay",
+                            "model",
+                            "muscle",
+                            "neckband",
+                            "pose",
+                            "shirtless",
+                            "strap",
+                            "underclothes",
+                            "waist",
+                            "woman"
+                        ],
+                        "cn": [
+                            "肚子 ",
+                            "束发带 ",
+                            "泳装 ",
+                            "比基尼上衣",
+                            "浅黑肤色的女人 ",
+                            "刷子",
+                            "化妆品",
+                            "沙发",
+                            "耳环",
+                            "女孩 ",
+                            "躺 ",
+                            "模型/模特",
+                            "肌肉 ",
+                            "围颈带/领口",
+                            "摆姿势拍照",
+                            "赤膊的",
+                            "带 ",
+                            "内衣 ",
+                            "腰 ",
+                            "女人 "
+                        ]
+                    },
+                    "nsfw": {
+                        "profile": {
+                            "sexy": 0.9325370192527771,
+                            "porn": 0.06337828934192657,
+                            "neutral": 0.0017685829661786556,
+                            "hentai": 0.0015640268102288246,
+                            "drawings": 0.0007520768558606505
+                        },
+                        "sfw": 0.0010193202178925276,
+                        "nsfw": 0.998980700969696
+                    }
+                }
+            }
+        ],
+        "text": "#girl #lay #pose #woman #brunette",
+        "target": {
+            "group_id": -1002009914077,
+            "chat_id": -1002110731894
+        },
+        "date": 1702122540000,
+        "id": "post:1702122540000"
     }
 ]

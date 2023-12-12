@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { post } from "../interfaces";
+import type { Post } from "../interfaces";
 
 defineProps<{
-  post: post;
+  post: Post;
 }>();
 </script>
 
@@ -14,11 +14,11 @@ defineProps<{
     <div class="images-container">
       <V-icon
         class="image-icon"
-        @click="$emit('openImage', post, image.name)"
         name="bi-card-image"
-        v-for="image in post.images"
+        v-for="image, index in post.images"
         :key="image.name"
         :title="image.name"
+        @click="$emit('openImage', post, image, index)"
       ></V-icon>
     </div>
   </div>
@@ -35,6 +35,7 @@ defineProps<{
   margin: auto;
   background-color: var(--main-light-color);
   border-radius: 3px;
+  margin-bottom: 20px;
 }
 .trash-icon {
   position: absolute;

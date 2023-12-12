@@ -1,30 +1,37 @@
-interface post {
-    images: Array<image>
+interface Post {
+    images: Array<Image>
     text: string
-    target: object
+    target: Target
     date: number
     id: string
 }
 
-interface image {
+interface Image {
     name: string
     type: string
     size: number
-    info: imageInfo
+    info: ImageInfo
 }
 
-interface imageInfo {
+interface ImageInfo {
     file: string
     size: Array<number>
-    parameters: imageParameters
+    parameters: ImageParameters
     tags: object
     nsfw: object
 }
 
-interface imageParameters {
+interface ImageParameters {
     prompt: string
 }
 
+interface Target {
+    group_id: number
+    chat_id: number
+    link: string
+    name: string
+}
+
 export type {
-    post, image, imageInfo, imageParameters
+    Post, Image, ImageInfo, ImageParameters
 }
