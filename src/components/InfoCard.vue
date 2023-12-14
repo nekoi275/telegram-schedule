@@ -4,7 +4,7 @@ import markdownit from 'markdown-it'
 const md = markdownit()
 
 defineProps<{
-  post: Post;
+  post: Post
 }>();
 </script>
 
@@ -12,7 +12,7 @@ defineProps<{
   <div class="card">
     <p v-html="md.render(post.text)"></p>
     <span>Date: {{ new Date(post.date) }}</span>
-    <V-icon name="bi-trash-fill" class="trash-icon"></V-icon>
+    <V-icon name="bi-trash-fill" class="trash-icon" @click="$emit('remove', post.target.group_id, post.date)"></V-icon>
     <div class="images-container">
       <V-icon
         class="image-icon"

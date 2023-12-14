@@ -6,12 +6,8 @@
   --text-light-color: #E8D9CA;
   --ms-tag-bg: var(--main-dark-color);
   --ms-font-size: 15px;
-  --ms-dropdown-bg: var(--text-light-color);
-  --ms-dropdown-border-color: var(--main-dark-color);
-  --ms-option-bg-pointed: var(--main-light-color);
-  --ms-border-color: var(--main-light-color);;
-  --ms-border-color-active: var(--main-light-color);;
-  --ms-ring-color: var(--main-light-color);;
+  --ms-dropdown-bg: var(--main-light-color);
+  --ms-option-bg-pointed: var(--text-light-color);
   --ms-option-bg-selected: var(--main-dark-color);
   --ms-option-bg-selected-pointed: var(--main-dark-color);
 }

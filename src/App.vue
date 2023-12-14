@@ -1,30 +1,42 @@
 <script setup lang="ts">
 import InfoCard from "./components/InfoCard.vue";
 import ImageModal from "./components/ImageModal.vue";
-//import posts from "./assets/posts-data.json";
 import type { Image, Post } from "./interfaces";
 import { useImageStore } from "./stores/image";
 import { useApiStore } from "./stores/api";
 import { onMounted, ref } from "vue";
-const imageStore = useImageStore();
-const api = useApiStore();
+const imageStore = useImageStore()
+const api = useApiStore()
 let posts = ref([] as Post[])
+let groups = ref([])
+let selectedGroup = ref('')
 
-function openImage(post: Post, image: Image, index: number) {
-  imageStore.image = image;
-  imageStore.isOpen = true;
-  imageStore.imageUrl = api.getImageUrl(post.target.group_id, post.date, index);
+async function openImage(post: Post, image: Image, index: number) {
+  const response = await api.getImage(
+    api.getImageUrl(post.target.group_id, post.date, index)
+  )
+  if (response) {
+    const objectUrl = URL.createObjectURL(response)  
+    imageStore.imageUrl = objectUrl
+  }
+  imageStore.image = image
   imageStore.imageParameters = image.info.parameters
+  imageStore.isOpen = true
+}
+function remove(groupId: any, date: number) {
+  api.remove(groupId, date).then(() => {
+    posts.value = posts.value.filter((post) => post.date != date && post.target.group_id != groupId)
+  })
 }
 onMounted(() => {
-  api.get().then(response => posts.value = response);
+  api.get().then(response => posts.value = response.sort((a: Post, b: Post) => a.date - b.date))
+  api.getGroupsList().then(response => groups.value = response)
 });
 </script>
 
 <template>
   <nav>
-    <Multi-select mode="tags"></Multi-select>
-    <button><V-icon name="bi-plus-square"></V-icon></button>
+    <Multi-select mode="single" :options="groups" v-model="selectedGroup"></Multi-select>
   </nav>
   <div class="wrapper">
     <main>
@@ -33,6 +45,7 @@ onMounted(() => {
         :key="post.id"
         :post="(post as unknown as Post)"
         @openImage="openImage"
+        @remove="remove"
       ></InfoCard>
     </main>
   </div>
@@ -57,9 +70,10 @@ button {
   padding: 0px;
 }
 .multiselect {
-  width: 150px;
+  width: 500px;
   position: absolute;
   left: 20px;
   top: 14px;
+  color: var(--text-dark-color);
 }
 </style>

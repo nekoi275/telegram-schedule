@@ -45,9 +45,46 @@ export const useApiStore = defineStore("api", () => {
       import.meta.url
     ).href;
   }
+  function getImage(imageUrl: string) {
+    return fetch(imageUrl, requestConfig.value).then((response) => {
+      if (response.ok) {
+        return response.blob()
+      } else {
+        console.error(
+          "getting error.Status: " + response.statusText + " " + response.text
+        );
+      }
+    });
+  }
+  function getGroupsList() {
+    return fetch(`${baseUrl}/api/groups`, requestConfig.value).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error(
+          "getting error.Status: " + response.statusText + " " + response.text
+        );
+      }
+    });
+  }
+  function remove(groupId: any, date: number) {
+    return fetch(`${baseUrl}/api/post?groupid=${groupId}&date=${date}`, {
+      ...requestConfig.value,
+      method: 'DELETE'
+    }).then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        console.error('getting error.Status: ' + response.statusText + ' ' + response.text)
+      }
+    })
+  }
   return {
     get,
     create,
-    getImageUrl
+    getImageUrl,
+    getImage,
+    getGroupsList,
+    remove
   };
 });

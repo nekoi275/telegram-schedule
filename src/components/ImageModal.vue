@@ -14,7 +14,7 @@ function formatParams() {
   <div class="container" v-show="imageStore.isOpen">
     <div class="overlay" @click="imageStore.isOpen = false"></div>
     <div class="modal">
-      <img :src="imageStore.imageUrl" />
+      <img :src="imageStore.imageUrl"/>
       <table>
         <tbody>
           <tr>
@@ -61,7 +61,7 @@ function formatParams() {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
-  background-color: var(--main-light-color);
+  background-color: var(--text-light-color);
   border-radius: 3px;
   padding: 20px;
   text-align: center;

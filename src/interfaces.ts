@@ -28,7 +28,7 @@ interface ImageParameters {
 }
 
 interface Target {
-  group_id: number;
+  group_id: any;
   chat_id: number;
   link: string;
   name: string;

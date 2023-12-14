@@ -4,10 +4,10 @@ import "@vueform/multiselect/themes/default.css";
 import "./style.css";
 import App from "./App.vue";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { BiPlusSquare, BiTrashFill, BiCardImage } from "oh-vue-icons/icons";
+import { BiTrashFill, BiCardImage,BiTelegram } from "oh-vue-icons/icons";
 import Multiselect from "@vueform/multiselect";
 
-addIcons(BiPlusSquare, BiTrashFill, BiCardImage);
+addIcons(BiTelegram, BiTrashFill, BiCardImage);
 
 const app = createApp(App);
 const pinia = createPinia();

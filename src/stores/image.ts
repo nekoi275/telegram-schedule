@@ -11,6 +11,8 @@ export const useImageStore = defineStore('image', () => {
     function close() {
         isOpen.value = false
         image.value = {} as Image
+        imageUrl.value = ''
+        imageParameters.value = {} as ImageParameters
     }
     return { isOpen, image, imageUrl, imageParameters, close}
 })
