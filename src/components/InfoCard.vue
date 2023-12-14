@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Post } from "../interfaces";
-
+import markdownit from 'markdown-it'
+const md = markdownit()
 
 defineProps<{
   post: Post;
@@ -9,7 +10,7 @@ defineProps<{
 
 <template>
   <div class="card">
-    <p>Text: {{ post.text }}</p>
+    <p v-html="md.render(post.text)"></p>
     <span>Date: {{ new Date(post.date) }}</span>
     <V-icon name="bi-trash-fill" class="trash-icon"></V-icon>
     <div class="images-container">
@@ -48,5 +49,8 @@ defineProps<{
 }
 .image-icon {
   margin-right: 20px;
+}
+p, span{
+  display: inline;
 }
 </style>

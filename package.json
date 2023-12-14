@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@vueform/multiselect": "^2.6.6",
+    "markdown-it": "^14.0.0",
     "oh-vue-icons": "^1.0.0-rc3",
     "pinia": "^2.1.7",
     "vue": "^3.3.8"
   },
   "devDependencies": {
+    "@types/markdown-it": "^13.0.7",
     "@vitejs/plugin-vue": "^4.5.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0",
