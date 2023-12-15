@@ -4,12 +4,22 @@ import ImageModal from "./components/ImageModal.vue";
 import type { Image, Post } from "./interfaces";
 import { useImageStore } from "./stores/image";
 import { useApiStore } from "./stores/api";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 const imageStore = useImageStore()
 const api = useApiStore()
 let posts = ref([] as Post[])
 let groups = ref([])
 let selectedGroup = ref('')
+const filteredPosts = computed(() => {
+  if (selectedGroup.value) {
+    let filtered = posts.value.filter(post => {
+      return post.target.group_id == selectedGroup.value
+    })
+    return filtered || posts.value
+  } else {
+    return posts.value
+  }
+})
 
 async function openImage(post: Post, image: Image, index: number) {
   const response = await api.getImage(
@@ -29,7 +39,9 @@ function remove(groupId: any, date: number) {
   })
 }
 onMounted(() => {
-  api.get().then(response => posts.value = response.sort((a: Post, b: Post) => a.date - b.date))
+  api.get().then(response => {
+    posts.value = response.sort((a: Post, b: Post) => a.date - b.date)
+  })
   api.getGroupsList().then(response => groups.value = response)
 });
 </script>
@@ -41,7 +53,7 @@ onMounted(() => {
   <div class="wrapper">
     <main>
       <InfoCard
-        v-for="post in posts"
+        v-for="post in filteredPosts"
         :key="post.id"
         :post="(post as unknown as Post)"
         @openImage="openImage"
