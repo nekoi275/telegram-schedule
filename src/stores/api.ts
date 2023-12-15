@@ -4,8 +4,8 @@ import type { Post } from "../interfaces";
 
 export const useApiStore = defineStore("api", () => {
   const baseUrl = "https://telegraf-worker-api.denias.workers.dev";
-  const userName = "denis";
-  const password = "Zvw9zXvg";
+  const userName = "";
+  const password = "";
   const requestConfig = computed(() => {
     return {
       headers: {
