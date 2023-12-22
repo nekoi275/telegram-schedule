@@ -4,8 +4,8 @@ import type { Post } from "../interfaces";
 
 export const useApiStore = defineStore("api", () => {
   const baseUrl = "https://telegraf-worker-api.denias.workers.dev";
-  const userName = "";
-  const password = "";
+  const userName = "denis";
+  const password = "Zvw9zXvg";
   const requestConfig = computed(() => {
     return {
       headers: {
@@ -79,12 +79,28 @@ export const useApiStore = defineStore("api", () => {
       }
     })
   }
+  function edit(data: Post, groupId: any, date: number) {
+    return fetch(`${baseUrl}/api/post?groupid=${groupId}&date=${date}`, {
+      ...requestConfig.value,
+      method: "PUT",
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error(
+          "getting error.Status: " + response.statusText + " " + response.text
+        );
+      }
+    });
+  }
   return {
     get,
     create,
     getImageUrl,
     getImage,
     getGroupsList,
-    remove
+    remove,
+    edit
   };
 });
