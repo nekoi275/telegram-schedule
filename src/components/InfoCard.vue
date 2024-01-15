@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Post } from "../interfaces";
-import markdownit from "markdown-it";
+import type { Post } from "../interfaces"
+import markdownit from "markdown-it"
 
-const md = markdownit();
+const md = markdownit()
 defineProps<{
-  post: Post;
-}>();
+  post: Post
+}>()
 </script>
 
 <template>

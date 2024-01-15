@@ -1,18 +1,48 @@
-import { defineStore } from "pinia";
-import { computed } from "vue";
-import type { Post } from "../interfaces";
+import { defineStore } from "pinia"
+import { computed, ref } from "vue"
+import type { Post } from "../interfaces"
+import router from "../router"
 
 export const useApiStore = defineStore("api", () => {
-  const baseUrl = "https://telegraf-worker-api.denias.workers.dev";
-  const userName = "denis";
-  const password = "Zvw9zXvg";
+  const baseUrl = "https://telegraf-worker-api.denias.workers.dev"
+  const userName = ref('')
+  const password = ref('')
+  const isLoggedIn = ref(false)
+  const isWrongCreds = ref(false)
   const requestConfig = computed(() => {
     return {
       headers: {
-        Authorization: `Basic ${btoa(`${userName}:${password}`)}`,
+        Authorization: `Basic ${btoa(
+          `${userName.value || localStorage.getItem('telegram-schedule-user')}:${
+            password.value || localStorage.getItem('telegram-schedule-pass')
+          }`
+        )}`
       },
     };
   });
+  function login() {
+    return fetch(baseUrl, requestConfig.value).then((response) => {
+      if (response.status !== 401) {
+        isLoggedIn.value = true
+        isWrongCreds.value = false
+        localStorage.setItem('telegram-schedule-user', userName.value)
+        localStorage.setItem('telegram-schedule-pass', password.value)
+        router.push('/')
+        return `Successfully logged in`
+      } else {
+        isWrongCreds.value = true
+        console.error('getting error.Status: ' + response.status)
+      }
+    })
+  }
+  function logout() {
+    isLoggedIn.value = false
+    localStorage.removeItem('telegram-schedule-user')
+    localStorage.removeItem('telegram-schedule-pass')
+    userName.value = ''
+    password.value = ''
+    router.push('/login')
+  }
   function get() {
     return fetch(`${baseUrl}/api/posts`, requestConfig.value).then((response) => {
       if (response.ok) {
@@ -95,6 +125,12 @@ export const useApiStore = defineStore("api", () => {
     });
   }
   return {
+    isLoggedIn,
+    isWrongCreds,
+    userName,
+    password,
+    login,
+    logout,
     get,
     create,
     getImageUrl,

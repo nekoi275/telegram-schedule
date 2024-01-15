@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useImageStore } from "../stores/image";
-const imageStore = useImageStore();
+import { useImageStore } from "../stores/image"
+const imageStore = useImageStore()
 
 function formatParams() {
   let params = {...imageStore.imageParameters}

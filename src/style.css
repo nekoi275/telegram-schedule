@@ -4,6 +4,7 @@
   --main-dark-color: #004A55;
   --text-dark-color: #201C1B;
   --text-light-color: #E8D9CA;
+  --warning-color: #f44262;
   --ms-tag-bg: var(--main-dark-color);
   --ms-font-size: 15px;
   --ms-dropdown-bg: var(--main-light-color);

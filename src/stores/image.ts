@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { Image, ImageParameters } from "../interfaces";
+import type { Image, ImageParameters } from "../interfaces"
 
 export const useImageStore = defineStore('image', () => {
     const isOpen = ref(false)
