@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { Post } from "../interfaces";
-import markdownit from 'markdown-it'
-const md = markdownit()
+import markdownit from "markdown-it";
 
+const md = markdownit();
 defineProps<{
-  post: Post
+  post: Post;
 }>();
 </script>
 
@@ -12,12 +12,16 @@ defineProps<{
   <div class="card">
     <p v-html="md.render(post.text)"></p>
     <span>Date: {{ new Date(post.date) }}</span>
-    <V-icon name="bi-trash-fill" class="trash-icon" @click="$emit('remove', post.target.group_id, post.date)"></V-icon>
+    <V-icon
+      name="bi-trash-fill"
+      class="trash-icon"
+      @click="$emit('remove', post.target.group_id, post.date)"
+    ></V-icon>
     <div class="images-container">
       <V-icon
         class="image-icon"
         name="bi-card-image"
-        v-for="image, index in post.images"
+        v-for="(image, index) in post.images"
         :key="image.name"
         :title="image.name"
         @click="$emit('openImage', post, image, index)"
@@ -44,13 +48,33 @@ defineProps<{
   top: 15px;
   right: 15px;
 }
+.edit-icon {
+  position: absolute;
+  top: 15px;
+  right: 40px;
+}
 .images-container {
   text-align: center;
 }
 .image-icon {
   margin-right: 20px;
 }
-p, span{
+p,
+span {
   display: inline;
+}
+input {
+  display: block;
+  border-radius: 3px;
+  padding: 5px;
+  width: 30%;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  border: none;
+  outline-width: 0;
+  transition: width 0.4s ease-in-out;
+}
+input[type=text]:focus {
+  width: 80%;
 }
 </style>

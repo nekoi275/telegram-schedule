@@ -5,14 +5,14 @@ import type { Image, Post } from "./interfaces";
 import { useImageStore } from "./stores/image";
 import { useApiStore } from "./stores/api";
 import { computed, onMounted, ref } from "vue";
-const imageStore = useImageStore()
-const api = useApiStore()
-let posts = ref([] as Post[])
-let groups = ref([])
-let selectedGroup = ref('')
+const imageStore = useImageStore();
+const api = useApiStore();
+let posts = ref([] as Post[]);
+let groups = ref([]);
+let selectedGroup = ref("");
 const filteredPosts = computed(() => {
   if (selectedGroup.value) {
-    let filtered = posts.value.filter(post => {
+    let filtered = posts.value.filter((post) => {
       return post.target.group_id == selectedGroup.value
     })
     return filtered || posts.value
@@ -26,7 +26,7 @@ async function openImage(post: Post, image: Image, index: number) {
     api.getImageUrl(post.target.group_id, post.date, index)
   )
   if (response) {
-    const objectUrl = URL.createObjectURL(response)  
+    const objectUrl = URL.createObjectURL(response)
     imageStore.imageUrl = objectUrl
   }
   imageStore.image = image
@@ -35,20 +35,26 @@ async function openImage(post: Post, image: Image, index: number) {
 }
 function remove(groupId: any, date: number) {
   api.remove(groupId, date).then(() => {
-    posts.value = posts.value.filter((post) => post.date != date && post.target.group_id != groupId)
+    posts.value = posts.value.filter(
+      (post) => post.date != date && post.target.group_id != groupId
+    )
   })
 }
 onMounted(() => {
-  api.get().then(response => {
+  api.get().then((response) => {
     posts.value = response.sort((a: Post, b: Post) => a.date - b.date)
-  })
-  api.getGroupsList().then(response => groups.value = response)
+  });
+  api.getGroupsList().then((response) => (groups.value = response))
 });
 </script>
 
 <template>
   <nav>
-    <Multi-select mode="single" :options="groups" v-model="selectedGroup"></Multi-select>
+    <Multi-select
+      mode="single"
+      :options="groups"
+      v-model="selectedGroup"
+    ></Multi-select>
   </nav>
   <div class="wrapper">
     <main>
