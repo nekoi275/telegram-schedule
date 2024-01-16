@@ -29,9 +29,30 @@ async function openImage(post: Post, image: Image, index: number) {
     const objectUrl = URL.createObjectURL(response)
     imageStore.imageUrl = objectUrl
   }
+  if (post.images[index + 1]) {
+    imageStore.hasNext = true
+  } else {
+    imageStore.hasNext = false
+  }
+  if (post.images[index - 1]) {
+    imageStore.hasPrev = true
+  } else {
+    imageStore.hasPrev = false
+  }
+  imageStore.imagePost = post
+  imageStore.imageIndex = index
   imageStore.image = image
   imageStore.imageParameters = image.info.parameters
   imageStore.isOpen = true
+}
+async function changeImage(direction: string) {
+  if (direction === 'next') {
+    let image = imageStore.imagePost.images[imageStore.imageIndex + 1]
+    openImage(imageStore.imagePost, image, imageStore.imageIndex + 1)
+  } else {
+    let image = imageStore.imagePost.images[imageStore.imageIndex - 1]
+    openImage(imageStore.imagePost, image, imageStore.imageIndex - 1)
+  }
 }
 function remove(groupId: any, date: number) {
   api.remove(groupId, date).then(() => {
@@ -75,7 +96,7 @@ onMounted(() => {
       ></InfoCard>
     </main>
   </div>
-  <ImageModal></ImageModal>
+  <ImageModal @changeImage="changeImage"></ImageModal>
 </template>
 
 <style scoped>
@@ -109,5 +130,6 @@ button {
   top: 20px;
   background-color: var(--main-light-color);
   border-radius: 3px;
+  padding: 5px;
 }
 </style>
